@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhaoyu.mapper.IMenuMapper">
+  <resultMap id="BaseResultMap" type="com.zhaoyu.domain.IMenuDo">
+    <!--@mbg.generated-->
+    <!--@Table i_menu-->
+    <id column="menu_id" jdbcType="BIGINT" property="menuId" />
+    <result column="pid" jdbcType="BIGINT" property="pid" />
+    <result column="user_code" jdbcType="BIGINT" property="userCode" />
+    <result column="department_code" jdbcType="BIGINT" property="departmentCode" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="permission" jdbcType="VARCHAR" property="permission" />
+    <result column="path" jdbcType="VARCHAR" property="path" />
+    <result column="is_visible" jdbcType="BOOLEAN" property="isVisible" />
+    <result column="component_name" jdbcType="VARCHAR" property="componentName" />
+    <result column="component_path" jdbcType="VARCHAR" property="componentPath" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_by_id" jdbcType="BIGINT" property="createById" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_by" jdbcType="TIMESTAMP" property="updateBy" />
+    <result column="update_by_id" jdbcType="BIGINT" property="updateById" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="deleted" jdbcType="BOOLEAN" property="deleted" />
+    <result column="sub_count" jdbcType="INTEGER" property="subCount" />
+    <result column="menu_enable" jdbcType="BOOLEAN" property="menuEnable" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    menu_id, pid, user_code, department_code, title, sort, icon, `type`, permission, 
+    `path`, is_visible, component_name, component_path, create_by, create_by_id, create_time, 
+    update_by, update_by_id, update_time, deleted, sub_count, menu_enable
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update i_menu
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="pid = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.pid,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="user_code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.userCode,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="department_code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.departmentCode,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="title = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.title,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="sort = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.sort,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="icon = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.icon,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`type` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.type,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="permission = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.permission,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`path` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.path,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="is_visible = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.isVisible,jdbcType=BOOLEAN}
+        </foreach>
+      </trim>
+      <trim prefix="component_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.componentName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="component_path = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.componentPath,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="create_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.createBy,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="create_by_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.createById,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="create_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="update_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.updateBy,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="update_by_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.updateById,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="update_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="deleted = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.deleted,jdbcType=BOOLEAN}
+        </foreach>
+      </trim>
+      <trim prefix="sub_count = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.subCount,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="menu_enable = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.menuEnable,jdbcType=BOOLEAN}
+        </foreach>
+      </trim>
+    </trim>
+    where menu_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.menuId,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update i_menu
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="pid = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.pid != null">
+            when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.pid,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="user_code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.userCode != null">
+            when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.userCode,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="department_code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.departmentCode != null">
+            when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.departmentCode,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="title = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.title != null">
+            when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.title,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="sort = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.sort != null">
+            when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.sort,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="icon = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.icon != null">
+            when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.icon,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="`type` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.type != null">
+            when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.type,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="permission = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.permission != null">
+            when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.permission,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="`path` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.path != null">
+            when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.path,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="is_visible = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.isVisible != null">
+            when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.isVisible,jdbcType=BOOLEAN}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="component_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.componentName != null">
+            when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.componentName,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="component_path = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.componentPath != null">
+            when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.componentPath,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="create_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.createBy != null">
+            when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.createBy,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="create_by_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.createById != null">
+            when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.createById,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="create_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.createTime != null">
+            when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="update_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.updateBy != null">
+            when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.updateBy,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="update_by_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.updateById != null">
+            when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.updateById,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="update_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.updateTime != null">
+            when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="deleted = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.deleted != null">
+            when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.deleted,jdbcType=BOOLEAN}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="sub_count = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.subCount != null">
+            when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.subCount,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="menu_enable = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.menuEnable != null">
+            when menu_id = #{item.menuId,jdbcType=BIGINT} then #{item.menuEnable,jdbcType=BOOLEAN}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where menu_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.menuId,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="menu_id" keyProperty="menuId" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into i_menu
+    (pid, user_code, department_code, title, sort, icon, `type`, permission, `path`, 
+      is_visible, component_name, component_path, create_by, create_by_id, create_time, 
+      update_by, update_by_id, update_time, deleted, sub_count, menu_enable)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.pid,jdbcType=BIGINT}, #{item.userCode,jdbcType=BIGINT}, #{item.departmentCode,jdbcType=BIGINT}, 
+        #{item.title,jdbcType=VARCHAR}, #{item.sort,jdbcType=INTEGER}, #{item.icon,jdbcType=VARCHAR}, 
+        #{item.type,jdbcType=VARCHAR}, #{item.permission,jdbcType=VARCHAR}, #{item.path,jdbcType=VARCHAR}, 
+        #{item.isVisible,jdbcType=BOOLEAN}, #{item.componentName,jdbcType=VARCHAR}, #{item.componentPath,jdbcType=VARCHAR}, 
+        #{item.createBy,jdbcType=VARCHAR}, #{item.createById,jdbcType=BIGINT}, #{item.createTime,jdbcType=TIMESTAMP}, 
+        #{item.updateBy,jdbcType=TIMESTAMP}, #{item.updateById,jdbcType=BIGINT}, #{item.updateTime,jdbcType=TIMESTAMP}, 
+        #{item.deleted,jdbcType=BOOLEAN}, #{item.subCount,jdbcType=INTEGER}, #{item.menuEnable,jdbcType=BOOLEAN}
+        )
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="menu_id" keyProperty="menuId" parameterType="com.zhaoyu.domain.IMenuDo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into i_menu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="menuId != null">
+        menu_id,
+      </if>
+      pid,
+      user_code,
+      department_code,
+      title,
+      sort,
+      icon,
+      `type`,
+      permission,
+      `path`,
+      is_visible,
+      component_name,
+      component_path,
+      create_by,
+      create_by_id,
+      create_time,
+      update_by,
+      update_by_id,
+      update_time,
+      deleted,
+      sub_count,
+      menu_enable,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="menuId != null">
+        #{menuId,jdbcType=BIGINT},
+      </if>
+      #{pid,jdbcType=BIGINT},
+      #{userCode,jdbcType=BIGINT},
+      #{departmentCode,jdbcType=BIGINT},
+      #{title,jdbcType=VARCHAR},
+      #{sort,jdbcType=INTEGER},
+      #{icon,jdbcType=VARCHAR},
+      #{type,jdbcType=VARCHAR},
+      #{permission,jdbcType=VARCHAR},
+      #{path,jdbcType=VARCHAR},
+      #{isVisible,jdbcType=BOOLEAN},
+      #{componentName,jdbcType=VARCHAR},
+      #{componentPath,jdbcType=VARCHAR},
+      #{createBy,jdbcType=VARCHAR},
+      #{createById,jdbcType=BIGINT},
+      #{createTime,jdbcType=TIMESTAMP},
+      #{updateBy,jdbcType=TIMESTAMP},
+      #{updateById,jdbcType=BIGINT},
+      #{updateTime,jdbcType=TIMESTAMP},
+      #{deleted,jdbcType=BOOLEAN},
+      #{subCount,jdbcType=INTEGER},
+      #{menuEnable,jdbcType=BOOLEAN},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="menuId != null">
+        menu_id = #{menuId,jdbcType=BIGINT},
+      </if>
+      pid = #{pid,jdbcType=BIGINT},
+      user_code = #{userCode,jdbcType=BIGINT},
+      department_code = #{departmentCode,jdbcType=BIGINT},
+      title = #{title,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      icon = #{icon,jdbcType=VARCHAR},
+      `type` = #{type,jdbcType=VARCHAR},
+      permission = #{permission,jdbcType=VARCHAR},
+      `path` = #{path,jdbcType=VARCHAR},
+      is_visible = #{isVisible,jdbcType=BOOLEAN},
+      component_name = #{componentName,jdbcType=VARCHAR},
+      component_path = #{componentPath,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_by_id = #{createById,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=TIMESTAMP},
+      update_by_id = #{updateById,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=BOOLEAN},
+      sub_count = #{subCount,jdbcType=INTEGER},
+      menu_enable = #{menuEnable,jdbcType=BOOLEAN},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="menu_id" keyProperty="menuId" parameterType="com.zhaoyu.domain.IMenuDo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into i_menu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="menuId != null">
+        menu_id,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="userCode != null">
+        user_code,
+      </if>
+      <if test="departmentCode != null">
+        department_code,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="icon != null">
+        icon,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="permission != null">
+        permission,
+      </if>
+      <if test="path != null">
+        `path`,
+      </if>
+      <if test="isVisible != null">
+        is_visible,
+      </if>
+      <if test="componentName != null">
+        component_name,
+      </if>
+      <if test="componentPath != null">
+        component_path,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createById != null">
+        create_by_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="updateById != null">
+        update_by_id,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+      <if test="subCount != null">
+        sub_count,
+      </if>
+      <if test="menuEnable != null">
+        menu_enable,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="menuId != null">
+        #{menuId,jdbcType=BIGINT},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=BIGINT},
+      </if>
+      <if test="userCode != null">
+        #{userCode,jdbcType=BIGINT},
+      </if>
+      <if test="departmentCode != null">
+        #{departmentCode,jdbcType=BIGINT},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="icon != null">
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="permission != null">
+        #{permission,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null">
+        #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="isVisible != null">
+        #{isVisible,jdbcType=BOOLEAN},
+      </if>
+      <if test="componentName != null">
+        #{componentName,jdbcType=VARCHAR},
+      </if>
+      <if test="componentPath != null">
+        #{componentPath,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createById != null">
+        #{createById,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateById != null">
+        #{updateById,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BOOLEAN},
+      </if>
+      <if test="subCount != null">
+        #{subCount,jdbcType=INTEGER},
+      </if>
+      <if test="menuEnable != null">
+        #{menuEnable,jdbcType=BOOLEAN},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="menuId != null">
+        menu_id = #{menuId,jdbcType=BIGINT},
+      </if>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=BIGINT},
+      </if>
+      <if test="userCode != null">
+        user_code = #{userCode,jdbcType=BIGINT},
+      </if>
+      <if test="departmentCode != null">
+        department_code = #{departmentCode,jdbcType=BIGINT},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="icon != null">
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="permission != null">
+        permission = #{permission,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null">
+        `path` = #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="isVisible != null">
+        is_visible = #{isVisible,jdbcType=BOOLEAN},
+      </if>
+      <if test="componentName != null">
+        component_name = #{componentName,jdbcType=VARCHAR},
+      </if>
+      <if test="componentPath != null">
+        component_path = #{componentPath,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createById != null">
+        create_by_id = #{createById,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateById != null">
+        update_by_id = #{updateById,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BOOLEAN},
+      </if>
+      <if test="subCount != null">
+        sub_count = #{subCount,jdbcType=INTEGER},
+      </if>
+      <if test="menuEnable != null">
+        menu_enable = #{menuEnable,jdbcType=BOOLEAN},
+      </if>
+    </trim>
+  </insert>
+</mapper>

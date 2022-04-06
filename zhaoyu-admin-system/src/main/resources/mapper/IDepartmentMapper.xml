@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhaoyu.mapper.IDepartmentMapper">
+  <resultMap id="BaseResultMap" type="com.zhaoyu.domain.IDepartmentDo">
+    <!--@mbg.generated-->
+    <!--@Table i_department-->
+    <id column="department_id" jdbcType="BIGINT" property="departmentId" />
+    <result column="department_code" jdbcType="BIGINT" property="departmentCode" />
+    <result column="department_pid" jdbcType="BIGINT" property="departmentPid" />
+    <result column="department_name" jdbcType="VARCHAR" property="departmentName" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="sub_count" jdbcType="INTEGER" property="subCount" />
+    <result column="department_enable" jdbcType="BOOLEAN" property="departmentEnable" />
+    <result column="manager_user_id" jdbcType="BIGINT" property="managerUserId" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_id" jdbcType="BIGINT" property="createId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_by" jdbcType="TIMESTAMP" property="updateBy" />
+    <result column="update_id" jdbcType="BIGINT" property="updateId" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="deleted" jdbcType="BOOLEAN" property="deleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    department_id, department_code, department_pid, department_name, sort, sub_count, 
+    department_enable, manager_user_id, create_by, create_id, create_time, update_by, 
+    update_id, update_time, deleted
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update i_department
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="department_code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when department_id = #{item.departmentId,jdbcType=BIGINT} then #{item.departmentCode,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="department_pid = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when department_id = #{item.departmentId,jdbcType=BIGINT} then #{item.departmentPid,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="department_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when department_id = #{item.departmentId,jdbcType=BIGINT} then #{item.departmentName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="sort = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when department_id = #{item.departmentId,jdbcType=BIGINT} then #{item.sort,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="sub_count = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when department_id = #{item.departmentId,jdbcType=BIGINT} then #{item.subCount,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="department_enable = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when department_id = #{item.departmentId,jdbcType=BIGINT} then #{item.departmentEnable,jdbcType=BOOLEAN}
+        </foreach>
+      </trim>
+      <trim prefix="manager_user_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when department_id = #{item.departmentId,jdbcType=BIGINT} then #{item.managerUserId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="create_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when department_id = #{item.departmentId,jdbcType=BIGINT} then #{item.createBy,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="create_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when department_id = #{item.departmentId,jdbcType=BIGINT} then #{item.createId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="create_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when department_id = #{item.departmentId,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="update_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when department_id = #{item.departmentId,jdbcType=BIGINT} then #{item.updateBy,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="update_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when department_id = #{item.departmentId,jdbcType=BIGINT} then #{item.updateId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="update_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when department_id = #{item.departmentId,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="deleted = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when department_id = #{item.departmentId,jdbcType=BIGINT} then #{item.deleted,jdbcType=BOOLEAN}
+        </foreach>
+      </trim>
+    </trim>
+    where department_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.departmentId,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update i_department
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="department_code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.departmentCode != null">
+            when department_id = #{item.departmentId,jdbcType=BIGINT} then #{item.departmentCode,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="department_pid = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.departmentPid != null">
+            when department_id = #{item.departmentId,jdbcType=BIGINT} then #{item.departmentPid,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="department_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.departmentName != null">
+            when department_id = #{item.departmentId,jdbcType=BIGINT} then #{item.departmentName,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="sort = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.sort != null">
+            when department_id = #{item.departmentId,jdbcType=BIGINT} then #{item.sort,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="sub_count = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.subCount != null">
+            when department_id = #{item.departmentId,jdbcType=BIGINT} then #{item.subCount,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="department_enable = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.departmentEnable != null">
+            when department_id = #{item.departmentId,jdbcType=BIGINT} then #{item.departmentEnable,jdbcType=BOOLEAN}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="manager_user_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.managerUserId != null">
+            when department_id = #{item.departmentId,jdbcType=BIGINT} then #{item.managerUserId,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="create_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.createBy != null">
+            when department_id = #{item.departmentId,jdbcType=BIGINT} then #{item.createBy,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="create_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.createId != null">
+            when department_id = #{item.departmentId,jdbcType=BIGINT} then #{item.createId,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="create_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.createTime != null">
+            when department_id = #{item.departmentId,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="update_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.updateBy != null">
+            when department_id = #{item.departmentId,jdbcType=BIGINT} then #{item.updateBy,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="update_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.updateId != null">
+            when department_id = #{item.departmentId,jdbcType=BIGINT} then #{item.updateId,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="update_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.updateTime != null">
+            when department_id = #{item.departmentId,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="deleted = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.deleted != null">
+            when department_id = #{item.departmentId,jdbcType=BIGINT} then #{item.deleted,jdbcType=BOOLEAN}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where department_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.departmentId,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="department_id" keyProperty="departmentId" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into i_department
+    (department_code, department_pid, department_name, sort, sub_count, department_enable, 
+      manager_user_id, create_by, create_id, create_time, update_by, update_id, update_time, 
+      deleted)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.departmentCode,jdbcType=BIGINT}, #{item.departmentPid,jdbcType=BIGINT}, #{item.departmentName,jdbcType=VARCHAR}, 
+        #{item.sort,jdbcType=INTEGER}, #{item.subCount,jdbcType=INTEGER}, #{item.departmentEnable,jdbcType=BOOLEAN}, 
+        #{item.managerUserId,jdbcType=BIGINT}, #{item.createBy,jdbcType=VARCHAR}, #{item.createId,jdbcType=BIGINT}, 
+        #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateBy,jdbcType=TIMESTAMP}, #{item.updateId,jdbcType=BIGINT}, 
+        #{item.updateTime,jdbcType=TIMESTAMP}, #{item.deleted,jdbcType=BOOLEAN})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="department_id" keyProperty="departmentId" parameterType="com.zhaoyu.domain.IDepartmentDo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into i_department
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="departmentId != null">
+        department_id,
+      </if>
+      department_code,
+      department_pid,
+      department_name,
+      sort,
+      sub_count,
+      department_enable,
+      manager_user_id,
+      create_by,
+      create_id,
+      create_time,
+      update_by,
+      update_id,
+      update_time,
+      deleted,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="departmentId != null">
+        #{departmentId,jdbcType=BIGINT},
+      </if>
+      #{departmentCode,jdbcType=BIGINT},
+      #{departmentPid,jdbcType=BIGINT},
+      #{departmentName,jdbcType=VARCHAR},
+      #{sort,jdbcType=INTEGER},
+      #{subCount,jdbcType=INTEGER},
+      #{departmentEnable,jdbcType=BOOLEAN},
+      #{managerUserId,jdbcType=BIGINT},
+      #{createBy,jdbcType=VARCHAR},
+      #{createId,jdbcType=BIGINT},
+      #{createTime,jdbcType=TIMESTAMP},
+      #{updateBy,jdbcType=TIMESTAMP},
+      #{updateId,jdbcType=BIGINT},
+      #{updateTime,jdbcType=TIMESTAMP},
+      #{deleted,jdbcType=BOOLEAN},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="departmentId != null">
+        department_id = #{departmentId,jdbcType=BIGINT},
+      </if>
+      department_code = #{departmentCode,jdbcType=BIGINT},
+      department_pid = #{departmentPid,jdbcType=BIGINT},
+      department_name = #{departmentName,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      sub_count = #{subCount,jdbcType=INTEGER},
+      department_enable = #{departmentEnable,jdbcType=BOOLEAN},
+      manager_user_id = #{managerUserId,jdbcType=BIGINT},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_id = #{createId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=TIMESTAMP},
+      update_id = #{updateId,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=BOOLEAN},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="department_id" keyProperty="departmentId" parameterType="com.zhaoyu.domain.IDepartmentDo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into i_department
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="departmentId != null">
+        department_id,
+      </if>
+      <if test="departmentCode != null">
+        department_code,
+      </if>
+      <if test="departmentPid != null">
+        department_pid,
+      </if>
+      <if test="departmentName != null">
+        department_name,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="subCount != null">
+        sub_count,
+      </if>
+      <if test="departmentEnable != null">
+        department_enable,
+      </if>
+      <if test="managerUserId != null">
+        manager_user_id,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createId != null">
+        create_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="updateId != null">
+        update_id,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="departmentId != null">
+        #{departmentId,jdbcType=BIGINT},
+      </if>
+      <if test="departmentCode != null">
+        #{departmentCode,jdbcType=BIGINT},
+      </if>
+      <if test="departmentPid != null">
+        #{departmentPid,jdbcType=BIGINT},
+      </if>
+      <if test="departmentName != null">
+        #{departmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="subCount != null">
+        #{subCount,jdbcType=INTEGER},
+      </if>
+      <if test="departmentEnable != null">
+        #{departmentEnable,jdbcType=BOOLEAN},
+      </if>
+      <if test="managerUserId != null">
+        #{managerUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null">
+        #{createId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateId != null">
+        #{updateId,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BOOLEAN},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="departmentId != null">
+        department_id = #{departmentId,jdbcType=BIGINT},
+      </if>
+      <if test="departmentCode != null">
+        department_code = #{departmentCode,jdbcType=BIGINT},
+      </if>
+      <if test="departmentPid != null">
+        department_pid = #{departmentPid,jdbcType=BIGINT},
+      </if>
+      <if test="departmentName != null">
+        department_name = #{departmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="subCount != null">
+        sub_count = #{subCount,jdbcType=INTEGER},
+      </if>
+      <if test="departmentEnable != null">
+        department_enable = #{departmentEnable,jdbcType=BOOLEAN},
+      </if>
+      <if test="managerUserId != null">
+        manager_user_id = #{managerUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null">
+        create_id = #{createId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateId != null">
+        update_id = #{updateId,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BOOLEAN},
+      </if>
+    </trim>
+  </insert>
+</mapper>

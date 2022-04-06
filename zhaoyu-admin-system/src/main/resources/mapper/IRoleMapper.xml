@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhaoyu.mapper.IRoleMapper">
+  <resultMap id="BaseResultMap" type="com.zhaoyu.domain.IRoleDo">
+    <!--@mbg.generated-->
+    <!--@Table i_role-->
+    <id column="role_id" jdbcType="BIGINT" property="roleId" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+    <result column="user_code" jdbcType="VARCHAR" property="userCode" />
+    <result column="data_scope" jdbcType="VARCHAR" property="dataScope" />
+    <result column="role_sort" jdbcType="INTEGER" property="roleSort" />
+    <result column="comments" jdbcType="VARCHAR" property="comments" />
+    <result column="department_code" jdbcType="VARCHAR" property="departmentCode" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_id" jdbcType="BIGINT" property="createId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_id" jdbcType="BIGINT" property="updateId" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="deleted" jdbcType="BOOLEAN" property="deleted" />
+    <result column="sort_enable" jdbcType="BOOLEAN" property="sortEnable" />
+    <result column="preinstall" jdbcType="BOOLEAN" property="preinstall" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    role_id, role_name, user_code, data_scope, role_sort, comments, department_code, 
+    create_by, create_id, create_time, update_by, update_id, update_time, deleted, sort_enable, 
+    preinstall
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update i_role
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="role_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.roleName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="user_code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.userCode,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="data_scope = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.dataScope,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="role_sort = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.roleSort,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="comments = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.comments,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="department_code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.departmentCode,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="create_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.createBy,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="create_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.createId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="create_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="update_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.updateBy,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="update_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.updateId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="update_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="deleted = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.deleted,jdbcType=BOOLEAN}
+        </foreach>
+      </trim>
+      <trim prefix="sort_enable = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.sortEnable,jdbcType=BOOLEAN}
+        </foreach>
+      </trim>
+      <trim prefix="preinstall = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.preinstall,jdbcType=BOOLEAN}
+        </foreach>
+      </trim>
+    </trim>
+    where role_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.roleId,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update i_role
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="role_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.roleName != null">
+            when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.roleName,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="user_code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.userCode != null">
+            when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.userCode,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="data_scope = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.dataScope != null">
+            when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.dataScope,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="role_sort = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.roleSort != null">
+            when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.roleSort,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="comments = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.comments != null">
+            when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.comments,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="department_code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.departmentCode != null">
+            when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.departmentCode,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="create_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.createBy != null">
+            when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.createBy,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="create_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.createId != null">
+            when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.createId,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="create_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.createTime != null">
+            when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="update_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.updateBy != null">
+            when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.updateBy,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="update_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.updateId != null">
+            when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.updateId,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="update_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.updateTime != null">
+            when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="deleted = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.deleted != null">
+            when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.deleted,jdbcType=BOOLEAN}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="sort_enable = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.sortEnable != null">
+            when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.sortEnable,jdbcType=BOOLEAN}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="preinstall = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.preinstall != null">
+            when role_id = #{item.roleId,jdbcType=BIGINT} then #{item.preinstall,jdbcType=BOOLEAN}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where role_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.roleId,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="role_id" keyProperty="roleId" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into i_role
+    (role_name, user_code, data_scope, role_sort, comments, department_code, create_by, 
+      create_id, create_time, update_by, update_id, update_time, deleted, sort_enable, 
+      preinstall)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.roleName,jdbcType=VARCHAR}, #{item.userCode,jdbcType=VARCHAR}, #{item.dataScope,jdbcType=VARCHAR}, 
+        #{item.roleSort,jdbcType=INTEGER}, #{item.comments,jdbcType=VARCHAR}, #{item.departmentCode,jdbcType=VARCHAR}, 
+        #{item.createBy,jdbcType=VARCHAR}, #{item.createId,jdbcType=BIGINT}, #{item.createTime,jdbcType=TIMESTAMP}, 
+        #{item.updateBy,jdbcType=VARCHAR}, #{item.updateId,jdbcType=BIGINT}, #{item.updateTime,jdbcType=TIMESTAMP}, 
+        #{item.deleted,jdbcType=BOOLEAN}, #{item.sortEnable,jdbcType=BOOLEAN}, #{item.preinstall,jdbcType=BOOLEAN}
+        )
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="role_id" keyProperty="roleId" parameterType="com.zhaoyu.domain.IRoleDo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into i_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleId != null">
+        role_id,
+      </if>
+      role_name,
+      user_code,
+      data_scope,
+      role_sort,
+      comments,
+      department_code,
+      create_by,
+      create_id,
+      create_time,
+      update_by,
+      update_id,
+      update_time,
+      deleted,
+      sort_enable,
+      preinstall,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleId != null">
+        #{roleId,jdbcType=BIGINT},
+      </if>
+      #{roleName,jdbcType=VARCHAR},
+      #{userCode,jdbcType=VARCHAR},
+      #{dataScope,jdbcType=VARCHAR},
+      #{roleSort,jdbcType=INTEGER},
+      #{comments,jdbcType=VARCHAR},
+      #{departmentCode,jdbcType=VARCHAR},
+      #{createBy,jdbcType=VARCHAR},
+      #{createId,jdbcType=BIGINT},
+      #{createTime,jdbcType=TIMESTAMP},
+      #{updateBy,jdbcType=VARCHAR},
+      #{updateId,jdbcType=BIGINT},
+      #{updateTime,jdbcType=TIMESTAMP},
+      #{deleted,jdbcType=BOOLEAN},
+      #{sortEnable,jdbcType=BOOLEAN},
+      #{preinstall,jdbcType=BOOLEAN},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=BIGINT},
+      </if>
+      role_name = #{roleName,jdbcType=VARCHAR},
+      user_code = #{userCode,jdbcType=VARCHAR},
+      data_scope = #{dataScope,jdbcType=VARCHAR},
+      role_sort = #{roleSort,jdbcType=INTEGER},
+      comments = #{comments,jdbcType=VARCHAR},
+      department_code = #{departmentCode,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_id = #{createId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_id = #{updateId,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=BOOLEAN},
+      sort_enable = #{sortEnable,jdbcType=BOOLEAN},
+      preinstall = #{preinstall,jdbcType=BOOLEAN},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="role_id" keyProperty="roleId" parameterType="com.zhaoyu.domain.IRoleDo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into i_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="roleName != null">
+        role_name,
+      </if>
+      <if test="userCode != null">
+        user_code,
+      </if>
+      <if test="dataScope != null">
+        data_scope,
+      </if>
+      <if test="roleSort != null">
+        role_sort,
+      </if>
+      <if test="comments != null">
+        comments,
+      </if>
+      <if test="departmentCode != null">
+        department_code,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createId != null">
+        create_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="updateId != null">
+        update_id,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+      <if test="sortEnable != null">
+        sort_enable,
+      </if>
+      <if test="preinstall != null">
+        preinstall,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleId != null">
+        #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="roleName != null">
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="userCode != null">
+        #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dataScope != null">
+        #{dataScope,jdbcType=VARCHAR},
+      </if>
+      <if test="roleSort != null">
+        #{roleSort,jdbcType=INTEGER},
+      </if>
+      <if test="comments != null">
+        #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentCode != null">
+        #{departmentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null">
+        #{createId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateId != null">
+        #{updateId,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BOOLEAN},
+      </if>
+      <if test="sortEnable != null">
+        #{sortEnable,jdbcType=BOOLEAN},
+      </if>
+      <if test="preinstall != null">
+        #{preinstall,jdbcType=BOOLEAN},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="roleName != null">
+        role_name = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="userCode != null">
+        user_code = #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dataScope != null">
+        data_scope = #{dataScope,jdbcType=VARCHAR},
+      </if>
+      <if test="roleSort != null">
+        role_sort = #{roleSort,jdbcType=INTEGER},
+      </if>
+      <if test="comments != null">
+        comments = #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentCode != null">
+        department_code = #{departmentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null">
+        create_id = #{createId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateId != null">
+        update_id = #{updateId,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BOOLEAN},
+      </if>
+      <if test="sortEnable != null">
+        sort_enable = #{sortEnable,jdbcType=BOOLEAN},
+      </if>
+      <if test="preinstall != null">
+        preinstall = #{preinstall,jdbcType=BOOLEAN},
+      </if>
+    </trim>
+  </insert>
+</mapper>
